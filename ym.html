@@ -1,0 +1,1611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AEON-X AI — Beyond Intelligence</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#02030a;
+    color:#fff;
+    font-family:"Space Grotesk",sans-serif;
+    overflow-x:hidden;
+}
+
+/* =========================
+   BACKGROUND
+========================= */
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:
+        radial-gradient(circle at 50% 30%,rgba(0,255,255,.08),transparent 30%),
+        radial-gradient(circle at 10% 80%,rgba(0,80,255,.08),transparent 25%),
+        radial-gradient(circle at 90% 70%,rgba(170,0,255,.08),transparent 25%);
+    pointer-events:none;
+    z-index:-2;
+}
+
+#stars{
+    position:fixed;
+    inset:0;
+    width:100%;
+    height:100%;
+    z-index:-3;
+}
+
+/* Scanlines */
+
+.scanlines{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:50;
+    opacity:.08;
+    background:
+        repeating-linear-gradient(
+            to bottom,
+            transparent 0px,
+            transparent 3px,
+            #00ffff 4px
+        );
+}
+
+/* =========================
+   NAVBAR
+========================= */
+
+header{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:100;
+    padding:20px 6%;
+    background:rgba(2,3,10,.65);
+    backdrop-filter:blur(18px);
+    border-bottom:1px solid rgba(0,255,255,.12);
+}
+
+nav{
+    max-width:1400px;
+    margin:auto;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.logo{
+    font-family:"Orbitron",sans-serif;
+    font-size:22px;
+    font-weight:800;
+    letter-spacing:5px;
+    color:#00ffff;
+    text-shadow:0 0 15px #00ffff;
+}
+
+.logo span{
+    color:#fff;
+}
+
+.nav-links{
+    display:flex;
+    gap:35px;
+    list-style:none;
+}
+
+.nav-links a{
+    text-decoration:none;
+    color:#aaa;
+    font-size:12px;
+    letter-spacing:2px;
+    transition:.3s;
+}
+
+.nav-links a:hover{
+    color:#00ffff;
+    text-shadow:0 0 10px #00ffff;
+}
+
+.status{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    color:#00ffff;
+    font-size:10px;
+    letter-spacing:2px;
+}
+
+.status-dot{
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    background:#00ffff;
+    box-shadow:0 0 15px #00ffff;
+    animation:pulse 1.5s infinite;
+}
+
+@keyframes pulse{
+    50%{
+        opacity:.3;
+        transform:scale(.7);
+    }
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    min-height:100vh;
+    padding:140px 6% 80px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+}
+
+.hero-container{
+    width:100%;
+    max-width:1400px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    align-items:center;
+    gap:50px;
+}
+
+.hero-content{
+    position:relative;
+    z-index:5;
+}
+
+.eyebrow{
+    color:#00ffff;
+    font-family:"Orbitron",sans-serif;
+    font-size:11px;
+    letter-spacing:5px;
+    margin-bottom:25px;
+}
+
+.hero h1{
+    font-family:"Orbitron",sans-serif;
+    font-size:clamp(55px,8vw,115px);
+    line-height:.9;
+    letter-spacing:-5px;
+    margin-bottom:30px;
+}
+
+.hero h1 span{
+    color:transparent;
+    -webkit-text-stroke:1px #00ffff;
+    text-shadow:0 0 25px rgba(0,255,255,.2);
+}
+
+.hero-text{
+    max-width:600px;
+    color:#8d929e;
+    font-size:17px;
+    line-height:1.8;
+    margin-bottom:35px;
+}
+
+.hero-buttons{
+    display:flex;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    border:1px solid #00ffff;
+    color:#00ffff;
+    padding:15px 25px;
+    background:rgba(0,255,255,.05);
+    text-decoration:none;
+    font-family:"Orbitron",sans-serif;
+    font-size:11px;
+    letter-spacing:2px;
+    transition:.3s;
+    cursor:pointer;
+}
+
+.btn:hover{
+    background:#00ffff;
+    color:#02030a;
+    box-shadow:0 0 30px rgba(0,255,255,.5);
+}
+
+.btn.secondary{
+    border-color:#444;
+    color:#aaa;
+}
+
+.btn.secondary:hover{
+    border-color:#fff;
+    background:#fff;
+    color:#000;
+}
+
+/* =========================
+   AI CORE
+========================= */
+
+.ai-stage{
+    width:min(550px,90vw);
+    height:550px;
+    position:relative;
+    margin:auto;
+    transform-style:preserve-3d;
+    transition:transform .2s ease-out;
+}
+
+.ai-core{
+    position:absolute;
+    width:190px;
+    height:190px;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+    border-radius:50%;
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #fff,
+            #00ffff 12%,
+            #006eff 35%,
+            #0500ff 55%,
+            #02030a 72%
+        );
+    box-shadow:
+        0 0 25px #00ffff,
+        0 0 80px rgba(0,255,255,.8),
+        0 0 160px rgba(0,80,255,.5);
+    animation:coreFloat 4s ease-in-out infinite;
+}
+
+.ai-core::before{
+    content:"";
+    position:absolute;
+    inset:-20px;
+    border-radius:50%;
+    border:1px solid rgba(0,255,255,.7);
+    animation:coreSpin 5s linear infinite;
+}
+
+.ai-core::after{
+    content:"";
+    position:absolute;
+    inset:-45px;
+    border-radius:50%;
+    border:1px dashed rgba(0,255,255,.35);
+    animation:coreSpin 9s linear infinite reverse;
+}
+
+@keyframes coreFloat{
+    50%{
+        transform:translate(-50%,-55%);
+    }
+}
+
+@keyframes coreSpin{
+    to{
+        transform:rotate(360deg);
+    }
+}
+
+.orbit{
+    position:absolute;
+    left:50%;
+    top:50%;
+    border:1px solid rgba(0,255,255,.25);
+    border-radius:50%;
+    transform-style:preserve-3d;
+}
+
+.orbit.one{
+    width:290px;
+    height:290px;
+    transform:translate(-50%,-50%) rotateX(65deg);
+    animation:orbit1 7s linear infinite;
+}
+
+.orbit.two{
+    width:390px;
+    height:180px;
+    transform:translate(-50%,-50%) rotateY(65deg);
+    animation:orbit2 10s linear infinite;
+}
+
+.orbit.three{
+    width:450px;
+    height:450px;
+    transform:translate(-50%,-50%) rotateX(70deg);
+    animation:orbit3 15s linear infinite;
+}
+
+.orbit.four{
+    width:520px;
+    height:250px;
+    transform:translate(-50%,-50%) rotateY(72deg);
+    animation:orbit4 18s linear infinite;
+}
+
+@keyframes orbit1{
+    to{
+        transform:translate(-50%,-50%) rotateX(65deg) rotateZ(360deg);
+    }
+}
+
+@keyframes orbit2{
+    to{
+        transform:translate(-50%,-50%) rotateY(65deg) rotateZ(360deg);
+    }
+}
+
+@keyframes orbit3{
+    to{
+        transform:translate(-50%,-50%) rotateX(70deg) rotateZ(-360deg);
+    }
+}
+
+@keyframes orbit4{
+    to{
+        transform:translate(-50%,-50%) rotateY(72deg) rotateZ(-360deg);
+    }
+}
+
+/* Particles */
+
+.particle{
+    position:absolute;
+    width:6px;
+    height:6px;
+    background:#00ffff;
+    border-radius:50%;
+    box-shadow:0 0 15px #00ffff;
+}
+
+.particle:nth-child(1){
+    top:15%;
+    left:20%;
+    animation:particle1 4s infinite;
+}
+
+.particle:nth-child(2){
+    top:75%;
+    left:15%;
+    animation:particle2 6s infinite;
+}
+
+.particle:nth-child(3){
+    top:20%;
+    right:15%;
+    animation:particle3 5s infinite;
+}
+
+.particle:nth-child(4){
+    bottom:10%;
+    right:25%;
+    animation:particle4 7s infinite;
+}
+
+@keyframes particle1{
+    50%{transform:translate(80px,40px);}
+}
+
+@keyframes particle2{
+    50%{transform:translate(100px,-70px);}
+}
+
+@keyframes particle3{
+    50%{transform:translate(-80px,70px);}
+}
+
+@keyframes particle4{
+    50%{transform:translate(-100px,-60px);}
+}
+
+/* =========================
+   AI STATUS
+========================= */
+
+.ai-status{
+    position:absolute;
+    bottom:10px;
+    left:50%;
+    transform:translateX(-50%);
+    white-space:nowrap;
+    color:#00ffff;
+    font-family:"Orbitron",sans-serif;
+    font-size:10px;
+    letter-spacing:3px;
+}
+
+/* =========================
+   CONSOLE
+========================= */
+
+.console-section{
+    padding:80px 6%;
+}
+
+.console{
+    max-width:900px;
+    margin:auto;
+    border:1px solid rgba(0,255,255,.3);
+    background:rgba(2,5,15,.75);
+    box-shadow:
+        0 0 40px rgba(0,255,255,.08),
+        inset 0 0 40px rgba(0,255,255,.02);
+}
+
+.console-top{
+    padding:12px 18px;
+    border-bottom:1px solid rgba(0,255,255,.15);
+    display:flex;
+    justify-content:space-between;
+    font-family:"Orbitron",sans-serif;
+    font-size:10px;
+    color:#00ffff;
+    letter-spacing:2px;
+}
+
+.console-body{
+    padding:25px;
+    min-height:240px;
+}
+
+.terminal{
+    font-family:monospace;
+    color:#7dffff;
+    line-height:1.8;
+    min-height:150px;
+    white-space:pre-wrap;
+}
+
+.input-row{
+    display:flex;
+    gap:10px;
+    margin-top:20px;
+}
+
+.input-row input{
+    flex:1;
+    background:#050812;
+    border:1px solid rgba(0,255,255,.25);
+    color:#fff;
+    padding:14px;
+    outline:none;
+    font-family:monospace;
+}
+
+.input-row input:focus{
+    border-color:#00ffff;
+    box-shadow:0 0 15px rgba(0,255,255,.15);
+}
+
+.send-btn{
+    padding:0 22px;
+    background:#00ffff;
+    border:0;
+    cursor:pointer;
+    font-family:"Orbitron",sans-serif;
+    font-size:10px;
+    font-weight:bold;
+}
+
+/* =========================
+   SECTIONS
+========================= */
+
+.section{
+    padding:120px 6%;
+    max-width:1500px;
+    margin:auto;
+}
+
+.section-heading{
+    margin-bottom:60px;
+}
+
+.section-number{
+    font-family:"Orbitron",sans-serif;
+    color:#00ffff;
+    font-size:11px;
+    letter-spacing:4px;
+    margin-bottom:15px;
+}
+
+.section-heading h2{
+    font-family:"Orbitron",sans-serif;
+    font-size:clamp(35px,5vw,70px);
+    letter-spacing:-2px;
+}
+
+.section-heading p{
+    color:#777;
+    max-width:600px;
+    margin-top:20px;
+    line-height:1.7;
+}
+
+/* =========================
+   CARDS
+========================= */
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.card{
+    position:relative;
+    padding:35px;
+    min-height:270px;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(0,255,255,.05),
+            rgba(255,255,255,.01)
+        );
+    border:1px solid rgba(255,255,255,.08);
+    overflow:hidden;
+    transition:.4s;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+    border-color:rgba(0,255,255,.5);
+    box-shadow:0 20px 50px rgba(0,255,255,.08);
+}
+
+.card::before{
+    content:"";
+    position:absolute;
+    width:100px;
+    height:100px;
+    right:-40px;
+    top:-40px;
+    border-radius:50%;
+    background:#00ffff;
+    filter:blur(70px);
+    opacity:.15;
+}
+
+.card-number{
+    color:#00ffff;
+    font-family:"Orbitron",sans-serif;
+    font-size:12px;
+}
+
+.card h3{
+    margin:35px 0 15px;
+    font-family:"Orbitron",sans-serif;
+    font-size:18px;
+}
+
+.card p{
+    color:#777;
+    line-height:1.7;
+    font-size:14px;
+}
+
+/* =========================
+   SYSTEM METRICS
+========================= */
+
+.metrics{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    border-top:1px solid rgba(255,255,255,.1);
+    border-bottom:1px solid rgba(255,255,255,.1);
+}
+
+.metric{
+    padding:45px 25px;
+    border-right:1px solid rgba(255,255,255,.1);
+}
+
+.metric:last-child{
+    border-right:0;
+}
+
+.metric-value{
+    font-family:"Orbitron",sans-serif;
+    font-size:38px;
+    color:#00ffff;
+    text-shadow:0 0 15px rgba(0,255,255,.3);
+}
+
+.metric-name{
+    color:#777;
+    margin-top:10px;
+    font-size:11px;
+    letter-spacing:2px;
+}
+
+/* =========================
+   FUTURE
+========================= */
+
+.future-grid{
+    display:grid;
+    grid-template-columns:1fr 1.5fr 1fr;
+    gap:20px;
+}
+
+.future-box{
+    min-height:400px;
+    padding:40px;
+    border:1px solid rgba(255,255,255,.08);
+    position:relative;
+    overflow:hidden;
+    background:#03050c;
+}
+
+.future-box.large{
+    background:
+        radial-gradient(
+            circle at 50% 50%,
+            rgba(0,255,255,.12),
+            transparent 50%
+        );
+}
+
+.future-box h3{
+    font-family:"Orbitron",sans-serif;
+    margin-bottom:20px;
+}
+
+.future-box p{
+    color:#777;
+    line-height:1.8;
+}
+
+.future-number{
+    position:absolute;
+    bottom:20px;
+    right:25px;
+    font-family:"Orbitron",sans-serif;
+    font-size:70px;
+    color:rgba(0,255,255,.05);
+}
+
+/* =========================
+   CTA
+========================= */
+
+.cta{
+    min-height:70vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:100px 20px;
+    position:relative;
+}
+
+.cta::before{
+    content:"";
+    position:absolute;
+    width:500px;
+    height:500px;
+    border-radius:50%;
+    background:#00ffff;
+    filter:blur(180px);
+    opacity:.07;
+}
+
+.cta h2{
+    position:relative;
+    font-family:"Orbitron",sans-serif;
+    font-size:clamp(40px,7vw,90px);
+    letter-spacing:-4px;
+    margin-bottom:30px;
+}
+
+.cta p{
+    color:#777;
+    max-width:600px;
+    line-height:1.8;
+    margin-bottom:35px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    padding:35px 6%;
+    border-top:1px solid rgba(255,255,255,.08);
+    display:flex;
+    justify-content:space-between;
+    gap:20px;
+    flex-wrap:wrap;
+    color:#555;
+    font-size:10px;
+    letter-spacing:2px;
+}
+
+footer span{
+    color:#00ffff;
+}
+
+/* =========================
+   REVEAL
+========================= */
+
+.reveal{
+    opacity:0;
+    transform:translateY(35px);
+    transition:1s ease;
+}
+
+.reveal.active{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:1000px){
+
+    .nav-links{
+        display:none;
+    }
+
+    .hero-container{
+        grid-template-columns:1fr;
+        text-align:center;
+    }
+
+    .hero-text{
+        margin-left:auto;
+        margin-right:auto;
+    }
+
+    .hero-buttons{
+        justify-content:center;
+    }
+
+    .ai-stage{
+        width:450px;
+        height:450px;
+    }
+
+    .ai-core{
+        width:150px;
+        height:150px;
+    }
+
+    .orbit.four{
+        width:430px;
+    }
+
+    .cards{
+        grid-template-columns:1fr;
+    }
+
+    .metrics{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .metric{
+        border-bottom:1px solid rgba(255,255,255,.1);
+    }
+
+    .future-grid{
+        grid-template-columns:1fr;
+    }
+}
+
+@media(max-width:600px){
+
+    header{
+        padding:18px 5%;
+    }
+
+    .logo{
+        font-size:17px;
+    }
+
+    .status{
+        font-size:8px;
+    }
+
+    .hero{
+        padding-left:5%;
+        padding-right:5%;
+    }
+
+    .hero h1{
+        font-size:55px;
+        letter-spacing:-3px;
+    }
+
+    .hero-text{
+        font-size:14px;
+    }
+
+    .ai-stage{
+        width:330px;
+        height:330px;
+    }
+
+    .ai-core{
+        width:110px;
+        height:110px;
+    }
+
+    .orbit.one{
+        width:200px;
+        height:200px;
+    }
+
+    .orbit.two{
+        width:260px;
+        height:120px;
+    }
+
+    .orbit.three{
+        width:300px;
+        height:300px;
+    }
+
+    .orbit.four{
+        width:320px;
+        height:160px;
+    }
+
+    .ai-status{
+        font-size:7px;
+    }
+
+    .metrics{
+        grid-template-columns:1fr;
+    }
+
+    .metric{
+        border-right:0;
+    }
+
+    .section{
+        padding:80px 5%;
+    }
+
+    .console-body{
+        padding:15px;
+    }
+
+    .input-row{
+        flex-direction:column;
+    }
+
+    .send-btn{
+        padding:15px;
+    }
+
+    footer{
+        flex-direction:column;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="stars"></canvas>
+
+<div class="scanlines"></div>
+
+<!-- =========================
+     NAVBAR
+========================= -->
+
+<header>
+<nav>
+
+    <div class="logo">
+        AEON<span>-X</span>
+    </div>
+
+    <ul class="nav-links">
+        <li><a href="#core">CORE</a></li>
+        <li><a href="#intelligence">INTELLIGENCE</a></li>
+        <li><a href="#systems">SYSTEMS</a></li>
+        <li><a href="#future">FUTURE</a></li>
+        <li><a href="#connect">CONNECT</a></li>
+    </ul>
+
+    <div class="status">
+        <div class="status-dot"></div>
+        AI ONLINE
+    </div>
+
+</nav>
+</header>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero" id="core">
+
+<div class="hero-container">
+
+    <div class="hero-content">
+
+        <div class="eyebrow">
+            AEON-X // ARTIFICIAL INTELLIGENCE
+        </div>
+
+        <h1>
+            MEET<br>
+            <span>AEON.</span>
+        </h1>
+
+        <p class="hero-text">
+            A next-generation artificial intelligence interface
+            designed to process information, understand systems,
+            and interact with the future.
+        </p>
+
+        <div class="hero-buttons">
+
+            <a href="#intelligence" class="btn">
+                EXPLORE SYSTEM
+            </a>
+
+            <a href="#console" class="btn secondary">
+                TALK TO AEON
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- AI CORE -->
+
+    <div class="ai-stage" id="aiStage">
+
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+
+        <div class="orbit one"></div>
+        <div class="orbit two"></div>
+        <div class="orbit three"></div>
+        <div class="orbit four"></div>
+
+        <div class="ai-core"></div>
+
+        <div class="ai-status">
+            NEURAL CORE // ACTIVE
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     AI CONSOLE
+========================= -->
+
+<section class="console-section" id="console">
+
+<div class="console">
+
+    <div class="console-top">
+        <span>AEON TERMINAL</span>
+        <span>SECURE CONNECTION</span>
+    </div>
+
+    <div class="console-body">
+
+        <div class="terminal" id="terminal">
+> AEON-X SYSTEM INITIALIZED
+> NEURAL NETWORK ONLINE
+> AWAITING USER COMMAND...
+        </div>
+
+        <div class="input-row">
+
+            <input
+                type="text"
+                id="command"
+                placeholder="Ask AEON something..."
+                autocomplete="off"
+            >
+
+            <button class="send-btn" onclick="askAEON()">
+                SEND
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     INTELLIGENCE
+========================= -->
+
+<section class="section" id="intelligence">
+
+<div class="section-heading reveal">
+
+    <div class="section-number">
+        01 // INTELLIGENCE
+    </div>
+
+    <h2>BEYOND<br>ORDINARY AI.</h2>
+
+    <p>
+        AEON-X combines advanced computational systems,
+        adaptive intelligence and futuristic interfaces
+        into one digital environment.
+    </p>
+
+</div>
+
+
+<div class="cards">
+
+    <div class="card reveal">
+
+        <div class="card-number">
+            01
+        </div>
+
+        <h3>NEURAL PROCESSING</h3>
+
+        <p>
+            Advanced neural processing designed to analyze
+            large amounts of information and identify patterns
+            with speed and precision.
+        </p>
+
+    </div>
+
+
+    <div class="card reveal">
+
+        <div class="card-number">
+            02
+        </div>
+
+        <h3>COGNITIVE ENGINE</h3>
+
+        <p>
+            A flexible cognitive architecture built for
+            understanding commands, interpreting information
+            and generating useful responses.
+        </p>
+
+    </div>
+
+
+    <div class="card reveal">
+
+        <div class="card-number">
+            03
+        </div>
+
+        <h3>QUANTUM RESPONSE</h3>
+
+        <p>
+            A futuristic interface concept focused on
+            extremely fast interaction between humans
+            and intelligent systems.
+        </p>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     SYSTEMS
+========================= -->
+
+<section class="section" id="systems">
+
+<div class="section-heading reveal">
+
+    <div class="section-number">
+        02 // SYSTEMS
+    </div>
+
+    <h2>SYSTEM<br>STATUS.</h2>
+
+</div>
+
+
+<div class="metrics reveal">
+
+    <div class="metric">
+
+        <div class="metric-value">
+            98.7%
+        </div>
+
+        <div class="metric-name">
+            NEURAL POWER
+        </div>
+
+    </div>
+
+
+    <div class="metric">
+
+        <div class="metric-value">
+            12,840
+        </div>
+
+        <div class="metric-name">
+            ACTIVE NODES
+        </div>
+
+    </div>
+
+
+    <div class="metric">
+
+        <div class="metric-value">
+            8.42
+        </div>
+
+        <div class="metric-name">
+            TB/S DATA FLOW
+        </div>
+
+    </div>
+
+
+    <div class="metric">
+
+        <div class="metric-value">
+            0.002
+        </div>
+
+        <div class="metric-name">
+            RESPONSE MS
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     FUTURE
+========================= -->
+
+<section class="section" id="future">
+
+<div class="section-heading reveal">
+
+    <div class="section-number">
+        03 // THE FUTURE
+    </div>
+
+    <h2>WELCOME TO<br>TOMORROW.</h2>
+
+</div>
+
+
+<div class="future-grid">
+
+    <div class="future-box reveal">
+
+        <h3>ADAPTIVE AI</h3>
+
+        <p>
+            Intelligent systems designed to adapt to changing
+            information, environments and user interactions.
+        </p>
+
+        <div class="future-number">
+            01
+        </div>
+
+    </div>
+
+
+    <div class="future-box large reveal">
+
+        <h3>HOLOGRAPHIC UI</h3>
+
+        <p>
+            Interfaces are moving beyond traditional screens.
+            AEON-X explores a future where information,
+            intelligence and immersive digital environments
+            work together.
+        </p>
+
+        <div class="future-number">
+            02
+        </div>
+
+    </div>
+
+
+    <div class="future-box reveal">
+
+        <h3>HUMAN + AI</h3>
+
+        <p>
+            The future is not simply about machines.
+            It is about creating better ways for people
+            and intelligent technology to work together.
+        </p>
+
+        <div class="future-number">
+            03
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     CTA
+========================= -->
+
+<section class="cta" id="connect">
+
+    <div class="section-number">
+        AEON-X // CONNECTION
+    </div>
+
+    <h2>
+        CONNECT<br>
+        WITH AEON.
+    </h2>
+
+    <p>
+        Enter the interface and experience a futuristic
+        AI environment built for exploration.
+    </p>
+
+    <button class="btn" onclick="activateAEON()">
+        AWAKEN AEON-X
+    </button>
+
+</section>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <div>
+        AEON-X AI © 2050
+    </div>
+
+    <div>
+        <span>ARTIFICIAL INTELLIGENCE SYSTEM</span>
+    </div>
+
+</footer>
+
+
+<script>
+
+/* =========================
+   STARFIELD
+========================= */
+
+const canvas = document.getElementById("stars");
+const ctx = canvas.getContext("2d");
+
+let stars = [];
+
+function resizeCanvas(){
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+}
+
+resizeCanvas();
+
+window.addEventListener("resize", resizeCanvas);
+
+
+for(let i = 0; i < 180; i++){
+
+    stars.push({
+
+        x:Math.random()*window.innerWidth,
+
+        y:Math.random()*window.innerHeight,
+
+        size:Math.random()*1.8,
+
+        speed:Math.random()*.5+.1
+
+    });
+
+}
+
+
+function animateStars(){
+
+    ctx.clearRect(
+        0,
+        0,
+        canvas.width,
+        canvas.height
+    );
+
+    stars.forEach(star => {
+
+        star.y += star.speed;
+
+        if(star.y > canvas.height){
+            star.y = 0;
+            star.x = Math.random()*canvas.width;
+        }
+
+        ctx.beginPath();
+
+        ctx.arc(
+            star.x,
+            star.y,
+            star.size,
+            0,
+            Math.PI*2
+        );
+
+        ctx.fillStyle =
+            "rgba(0,255,255,.65)";
+
+        ctx.fill();
+
+    });
+
+    requestAnimationFrame(animateStars);
+
+}
+
+animateStars();
+
+
+/* =========================
+   SCROLL REVEAL
+========================= */
+
+const reveals =
+document.querySelectorAll(".reveal");
+
+const observer =
+new IntersectionObserver(
+    entries => {
+
+        entries.forEach(entry => {
+
+            if(entry.isIntersecting){
+
+                entry.target.classList.add("active");
+
+            }
+
+        });
+
+    },
+    {
+        threshold:.15
+    }
+);
+
+reveals.forEach(el => observer.observe(el));
+
+
+/* =========================
+   AEON TERMINAL
+========================= */
+
+const terminal =
+document.getElementById("terminal");
+
+const command =
+document.getElementById("command");
+
+
+function askAEON(){
+
+    const input =
+        command.value.trim();
+
+    if(!input) return;
+
+    terminal.textContent +=
+        "\n\n> USER: " + input;
+
+    let response =
+        "AEON: I am processing your request through the AEON-X interface.";
+
+    const text =
+        input.toLowerCase();
+
+
+    if(
+        text.includes("hello") ||
+        text.includes("hi")
+    ){
+
+        response =
+        "AEON: Hello. Neural connection established. How can I assist you?";
+
+    }
+
+    else if(
+        text.includes("who are you")
+    ){
+
+        response =
+        "AEON: I am AEON-X, a futuristic artificial intelligence interface designed for intelligent interaction.";
+
+    }
+
+    else if(
+        text.includes("future")
+    ){
+
+        response =
+        "AEON: The future will be shaped by intelligent systems, human creativity and responsible technology.";
+
+    }
+
+    else if(
+        text.includes("system")
+    ){
+
+        response =
+        "AEON: All primary systems are operational. Neural core is active.";
+
+    }
+
+    else if(
+        text.includes("status")
+    ){
+
+        response =
+        "AEON: SYSTEM STATUS — ONLINE. CORE STABILITY 98.7%. CONNECTION SECURE.";
+
+    }
+
+    else if(
+        text.includes("name")
+    ){
+
+        response =
+        "AEON: My designation is AEON-X.";
+
+    }
+
+
+    setTimeout(() => {
+
+        terminal.textContent +=
+            "\n" + response;
+
+        terminal.scrollTop =
+            terminal.scrollHeight;
+
+    },500);
+
+
+    command.value = "";
+
+}
+
+
+/* =========================
+   ENTER KEY
+========================= */
+
+command.addEventListener(
+    "keydown",
+    function(event){
+
+        if(event.key === "Enter"){
+
+            askAEON();
+
+        }
+
+    }
+);
+
+
+/* =========================
+   AWAKEN AEON
+========================= */
+
+function activateAEON(){
+
+    const button =
+        event.target;
+
+    button.textContent =
+        "AEON IS AWAKE.";
+
+    button.style.boxShadow =
+        "0 0 40px rgba(0,255,255,.8)";
+
+    terminal.textContent +=
+        "\n\n> AEON-X CORE AWAKENED.";
+
+}
+
+
+/* =========================
+   3D MOUSE EFFECT
+========================= */
+
+const aiStage =
+document.getElementById("aiStage");
+
+
+document.addEventListener(
+    "mousemove",
+    function(e){
+
+        const x =
+            (e.clientX /
+            window.innerWidth - .5) * 12;
+
+        const y =
+            (e.clientY /
+            window.innerHeight - .5) * -12;
+
+        aiStage.style.transform =
+            `rotateY(${x}deg) rotateX(${y}deg)`;
+
+    }
+);
+
+</script>
+
+</body>
+</html>
