@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daymark | Personal Tracker</title>
+    <link rel="stylesheet" href="tracker.css">
+</head>
+<body>
+    <main class="app-shell">
+        <aside class="sidebar">
+            <a class="brand" href="tracker.html"><span class="brand-mark">D</span><span>daymark</span></a>
+            <p class="eyebrow">PERSONAL TRACKER</p>
+            <nav class="side-nav" aria-label="Main navigation">
+                <a class="nav-item active" href="#today"><span class="nav-icon">&#9632;</span>Today</a>
+                <a class="nav-item" href="#habits"><span class="nav-icon">&#10003;</span>Habits</a>
+                <a class="nav-item" href="#insights"><span class="nav-icon">&#9733;</span>Insights</a>
+            </nav>
+            <div class="sidebar-note">
+                <span class="note-dot"></span>
+                <div><strong>Small steps count.</strong><p>Keep your rhythm, one day at a time.</p></div>
+            </div>
+        </aside>
+
+        <section class="workspace" id="today">
+            <header class="topbar">
+                <div>
+                    <p class="eyebrow">THURSDAY, SEPTEMBER 17</p>
+                    <h1>Your day, in focus.</h1>
+                </div>
+                <button class="icon-button" id="clearCompleted" type="button" title="Clear completed tasks" aria-label="Clear completed tasks">&#10003;</button>
+            </header>
+
+            <section class="summary-grid" aria-label="Daily summary">
+                <article class="summary-card accent-card"><div class="summary-icon">&#9679;</div><div><strong id="focusCount">0</strong><span>open tasks</span></div><div class="mini-bars"><i></i><i></i><i></i><i></i><i></i></div></article>
+                <article class="summary-card"><div class="summary-icon soft">&#10003;</div><div><strong id="doneCount">0</strong><span>completed</span></div><div class="completion-ring" id="completionRing"><span>0%</span></div></article>
+                <article class="summary-card"><div class="summary-icon warm">&#9733;</div><div><strong id="streakCount">0</strong><span>day streak</span></div><span class="trend">+1 today</span></article>
+            </section>
+
+            <section class="tracker-panel" aria-labelledby="tasksHeading">
+                <div class="panel-heading">
+                    <div><p class="eyebrow">YOUR LIST</p><h2 id="tasksHeading">Today's tasks</h2></div>
+                    <div class="filters" role="group" aria-label="Filter tasks"><button class="filter active" data-filter="all" type="button">All</button><button class="filter" data-filter="open" type="button">Open</button><button class="filter" data-filter="done" type="button">Done</button></div>
+                </div>
+                <form class="add-task" id="taskForm"><label class="sr-only" for="taskInput">Add a task</label><input id="taskInput" name="task" type="text" placeholder="What needs your attention?" autocomplete="off" maxlength="80" required><select id="tagInput" aria-label="Task category"><option value="Focus">Focus</option><option value="Personal">Personal</option><option value="Health">Health</option></select><button type="submit">Add task <span>+</span></button></form>
+                <div class="task-list" id="taskList" aria-live="polite"></div>
+                <p class="empty-state" id="emptyState" hidden>No tasks in this view. Add something small to get moving.</p>
+            </section>
+
+            <section class="lower-grid" id="habits">
+                <article class="habit-panel"><div class="panel-heading compact"><div><p class="eyebrow">REPEATABLE</p><h2>Daily habits</h2></div><button class="text-button" id="resetHabits" type="button">Reset</button></div><div class="habit-list" id="habitList"></div></article>
+                <article class="quote-panel" id="insights"><span class="quote-mark">“</span><p>Consistency is not about perfection. It is about returning to what matters.</p><span class="quote-credit">DAYMARK NOTE  /  01</span></article>
+            </section>
+        </section>
+    </main>
+    <script src="tracker.js"></script>
+</body>
+</html>

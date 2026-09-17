@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Angela: Night Shift</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="angela-game.css" />
+  </head>
+  <body>
+    <div class="game-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">interactive story</p>
+          <h1>Angela: Night Shift</h1>
+        </div>
+        <button id="voiceToggle" class="voice-button" type="button">Voice on</button>
+      </header>
+
+      <main class="game-layout">
+        <section class="character-panel">
+          <div class="portrait-wrap">
+            <div class="portrait">
+              <span>A</span>
+            </div>
+          </div>
+          <div class="identity-box">
+            <p class="eyebrow alt">character</p>
+            <h2>Angela</h2>
+            <p class="bio">A calm, observant emergency responder with a sharp instinct for danger and a steady voice in tense moments.</p>
+          </div>
+
+          <div class="status-block">
+            <div class="stat-row">
+              <label>Trust</label>
+              <div class="meter"><span id="trustMeter" style="width:65%"></span></div>
+            </div>
+            <div class="stat-row">
+              <label>Alertness</label>
+              <div class="meter"><span id="alertMeter" style="width:55%"></span></div>
+            </div>
+            <div class="stat-row">
+              <label>Tension</label>
+              <div class="meter danger"><span id="tensionMeter" style="width:30%"></span></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="story-panel">
+          <div class="scene-tag" id="sceneTag">Scene 1</div>
+          <div class="dialogue-box">
+            <div id="storyText"></div>
+          </div>
+          <div id="choiceContainer" class="choice-container"></div>
+        </section>
+      </main>
+    </div>
+
+    <script src="angela-game.js"></script>
+  </body>
+</html>

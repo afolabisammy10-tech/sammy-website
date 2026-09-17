@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GoalDash | Sportsbook</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="sportsbook.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <div class="brand-wrap">
+          <div class="brand-mark">G</div>
+          <div>
+            <div class="brand-name">GoalDash</div>
+            <small>Sportsbook</small>
+          </div>
+        </div>
+
+        <nav class="main-nav">
+          <a class="active" href="#">Live</a>
+          <a href="#">Prematch</a>
+          <a href="#">Top Leagues</a>
+          <a href="#">Virtuals</a>
+        </nav>
+
+        <div class="top-actions">
+          <button class="ghost-btn">Log in</button>
+          <button class="primary-btn">Open account</button>
+        </div>
+      </header>
+
+      <main class="dashboard">
+        <section class="content-panel">
+          <div class="hero-banner">
+            <div>
+              <p class="eyebrow">TODAY'S HIGHLIGHTS</p>
+              <h1>Bet smarter on live matches and top odds.</h1>
+            </div>
+            <div class="badge">+32% boost</div>
+          </div>
+
+          <div class="market-tabs">
+            <button class="tab active" data-filter="all">All</button>
+            <button class="tab" data-filter="live">Live</button>
+            <button class="tab" data-filter="football">Football</button>
+            <button class="tab" data-filter="basketball">Basketball</button>
+            <button class="tab" data-filter="tennis">Tennis</button>
+          </div>
+
+          <div class="fixture-list" id="fixtureList"></div>
+        </section>
+
+        <aside class="bet-slip-panel">
+          <div class="bet-slip-header">
+            <div>
+              <p class="eyebrow">BET SLIP</p>
+              <h2>My picks</h2>
+            </div>
+            <span class="pill" id="betCount">0 picks</span>
+          </div>
+
+          <div id="betSlipEmpty" class="bet-slip-empty">
+            Select odds to build your ticket.
+          </div>
+
+          <div id="betSlip" class="bet-slip-items"></div>
+
+          <div class="stake-box">
+            <label for="stakeInput">Stake</label>
+            <div class="stake-row">
+              <span>₦</span>
+              <input id="stakeInput" type="number" value="5000" min="100" step="100" />
+            </div>
+          </div>
+
+          <div class="totals">
+            <div><span>Possible win</span><strong id="possibleWin">₦0</strong></div>
+            <div><span>Risk</span><strong id="riskAmount">₦5,000</strong></div>
+          </div>
+
+          <button class="place-bet-btn" type="button">Place bet</button>
+        </aside>
+      </main>
+    </div>
+
+    <script src="sportsbook.js"></script>
+  </body>
+</html>
