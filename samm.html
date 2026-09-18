@@ -2,6 +2,8 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -49,7 +51,7 @@
         <div class="hero-text">
 
             <p class="small-heading">
-                👋 HELLO, I'M
+                <span class="status-dot"></span> AVAILABLE FOR SELECT PROJECTS
             </p>
 
             <h1>
@@ -67,6 +69,12 @@
                 user-friendly digital experiences using
                 HTML, CSS and JavaScript.
             </p>
+
+            <div class="hero-proof">
+                <span>Based in Lagos</span>
+                <span class="proof-line"></span>
+                <span>Open to collaboration</span>
+            </div>
 
             <div class="buttons">
 
@@ -328,6 +336,12 @@
             while learning and developing my skills.
         </p>
 
+        <div class="project-filters" aria-label="Filter projects">
+            <button class="filter-button active" type="button" data-filter="all">All work</button>
+            <button class="filter-button" type="button" data-filter="development">Development</button>
+            <button class="filter-button" type="button" data-filter="design">Design</button>
+        </div>
+
     </div>
 
 
@@ -336,7 +350,7 @@
 
         <!-- PROJECT 1 -->
 
-        <article class="project-card">
+        <article class="project-card" data-category="development">
 
             <div class="project-image">
 
@@ -346,7 +360,7 @@
                 >
 
                 <div class="project-overlay">
-                    <a href="#" class="view-project">
+                    <a href="#contact" class="view-project">
                         View Project →
                     </a>
                 </div>
@@ -382,7 +396,7 @@
 
         <!-- PROJECT 2 -->
 
-        <article class="project-card">
+        <article class="project-card" data-category="design">
 
             <div class="project-image">
 
@@ -392,7 +406,7 @@
                 >
 
                 <div class="project-overlay">
-                    <a href="#" class="view-project">
+                    <a href="#contact" class="view-project">
                         View Project →
                     </a>
                 </div>
@@ -428,7 +442,7 @@
 
         <!-- PROJECT 3 -->
 
-        <article class="project-card">
+        <article class="project-card" data-category="development">
 
             <div class="project-image project-placeholder">
 
@@ -549,6 +563,16 @@
 
             </div>
 
+            <a
+                class="whatsapp-button"
+                href="https://wa.me/2349114362935?text=Hi%20Sammy%2C%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20work%20with%20you."
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                <span class="whatsapp-icon">wa</span>
+                Message me on WhatsApp <span aria-hidden="true">↗</span>
+            </a>
+
         </div>
 
 
@@ -559,12 +583,13 @@
             <div class="input-group">
 
                 <label for="name">
-                    Sammy
+                    Your Name
                 </label>
 
                 <input
                     type="text"
                     id="name"
+                    name="name"
                     placeholder="Enter your name"
                     required
                 >
@@ -581,6 +606,7 @@
                 <input
                     type="email"
                     id="email"
+                    name="email"
                     placeholder="Enter your email"
                     required
                 >
@@ -596,6 +622,7 @@
 
                 <textarea
                     id="message"
+                    name="message"
                     rows="6"
                     placeholder="Write your message..."
                     required
@@ -607,6 +634,8 @@
             <button type="submit">
                 Send Message →
             </button>
+
+            <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
 
         </form>
 
@@ -676,7 +705,12 @@
 
                 <a href="#">f</a>
                 <a href="#">ig</a>
-                <a href="#">wa</a>
+                <a
+                    href="https://wa.me/2349114362935?text=Hi%20Sammy%2C%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20work%20with%20you."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Message Sammy on WhatsApp"
+                >wa</a>
                 <a href="#">gh</a>
 
             </div>
@@ -699,7 +733,7 @@
     </div>
 
 </footer>
-
+<script src="script.js"></script>
 </body>
 </html>
 
