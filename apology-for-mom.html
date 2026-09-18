@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>I'm Sorry, Mom</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+    --ink: #24332f;
+    --muted: #66736e;
+    --paper: #fffaf1;
+    --cream: #f4ead8;
+    --sage: #b8cdbd;
+    --green: #537565;
+    --coral: #d97962;
+    --line: rgba(36, 51, 47, .14);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    margin: 0;
+    color: var(--ink);
+    background: var(--cream);
+    font-family: "Manrope", sans-serif;
+    line-height: 1.65;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: .27;
+    background-image: radial-gradient(rgba(36,51,47,.18) .7px, transparent .7px);
+    background-size: 13px 13px;
+    mix-blend-mode: multiply;
+}
+
+.wrap { width: min(1080px, 88%); margin: auto; }
+.hero {
+    min-height: 92vh;
+    display: grid;
+    place-items: center;
+    padding: 72px 0 90px;
+    background:
+        radial-gradient(circle at 82% 15%, rgba(185, 205, 189, .82), transparent 25%),
+        radial-gradient(circle at 8% 80%, rgba(217, 121, 98, .14), transparent 28%),
+        var(--paper);
+}
+.hero-inner { max-width: 790px; text-align: center; }
+.eyebrow {
+    color: var(--coral);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+}
+h1, h2 { font-family: "DM Serif Display", serif; font-weight: 400; line-height: 1.08; }
+h1 { margin: 20px 0 24px; font-size: clamp(4rem, 10vw, 8rem); letter-spacing: -3px; }
+.hero p { max-width: 600px; margin: 0 auto; color: var(--muted); font-size: 1.1rem; }
+.button {
+    display: inline-block;
+    margin-top: 32px;
+    padding: 14px 24px;
+    border: 1px solid var(--green);
+    border-radius: 999px;
+    background: var(--green);
+    color: white;
+    font-weight: 800;
+    text-decoration: none;
+    transition: transform .2s ease, box-shadow .2s ease;
+}
+.button:hover { transform: translateY(-3px); box-shadow: 0 10px 24px rgba(83,117,101,.25); }
+
+section { padding: 100px 0; }
+.section-heading { max-width: 580px; margin-bottom: 42px; }
+.section-heading h2 { margin: 10px 0 14px; font-size: clamp(2.5rem, 5vw, 4.5rem); }
+.section-heading p { color: var(--muted); }
+.letter {
+    max-width: 780px;
+    padding: clamp(28px, 6vw, 64px);
+    border: 1px solid var(--line);
+    border-radius: 28px;
+    background: rgba(255,250,241,.76);
+    box-shadow: 0 20px 55px rgba(66, 75, 65, .09);
+}
+.letter p { margin: 0 0 20px; font-size: 1.05rem; }
+.letter p:last-child { margin-bottom: 0; }
+.signature { color: var(--green); font-weight: 800; }
+
+.reasons { background: var(--green); color: white; }
+.reasons .eyebrow { color: #dbe9ce; }
+.reasons .section-heading p { color: rgba(255,255,255,.78); }
+.reason-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.reason {
+    min-height: 230px;
+    padding: 27px;
+    border: 1px solid rgba(255,255,255,.2);
+    border-radius: 18px;
+    background: rgba(255,255,255,.1);
+}
+.number { color: #e4b898; font-size: 14px; font-weight: 800; }
+.reason h3 { margin: 34px 0 10px; font-size: 1.1rem; }
+.reason p { margin: 0; color: rgba(255,255,255,.77); font-size: .95rem; }
+
+.plan { background: var(--paper); }
+.promise-list { display: grid; gap: 14px; max-width: 760px; }
+.promise {
+    display: grid;
+    grid-template-columns: 42px 1fr;
+    align-items: start;
+    gap: 16px;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--line);
+}
+.check {
+    display: grid;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: var(--sage);
+    color: var(--ink);
+    font-weight: 800;
+}
+.promise h3 { margin: 0 0 4px; font-size: 1rem; }
+.promise p { margin: 0; color: var(--muted); font-size: .95rem; }
+
+.closing { padding: 110px 0; text-align: center; background: #eadbc2; }
+.closing h2 { max-width: 690px; margin: 0 auto 18px; font-size: clamp(2.7rem, 6vw, 5.2rem); }
+.closing p { max-width: 560px; margin: auto; color: var(--muted); }
+footer { padding: 26px; text-align: center; color: var(--muted); font-size: .82rem; }
+
+@media (max-width: 720px) {
+    .hero { min-height: 88vh; padding: 52px 0; }
+    h1 { letter-spacing: -1px; }
+    section { padding: 72px 0; }
+    .reason-grid { grid-template-columns: 1fr; }
+    .reason { min-height: auto; }
+}
+</style>
+</head>
+<body>
+<main>
+    <header class="hero">
+        <div class="hero-inner wrap">
+            <div class="eyebrow">A message from me to you</div>
+            <h1>I'm sorry, Mom.</h1>
+            <p>I lied to you, and that was wrong. This page is not meant to make excuses. It is my way of saying the truth clearly and showing you that I understand what I need to change.</p>
+            <a class="button" href="#letter">Read my apology</a>
+        </div>
+    </header>
+
+    <section id="letter">
+        <div class="wrap">
+            <div class="section-heading">
+                <div class="eyebrow">The important part</div>
+                <h2>I want to earn back your trust.</h2>
+                <p>You deserved honesty from me the first time.</p>
+            </div>
+            <div class="letter">
+                <p>Mom, I am genuinely sorry for lying to you. I know the lie itself was hurtful, but I also understand that it made it harder for you to trust what I say. I am not going to blame anyone else or pretend it was not a big deal.</p>
+                <p>You gave me rules for a reason, and I chose not to be honest about what happened. I understand why you took my phone away, and I accept that consequence even though I do not like it.</p>
+                <p>I am asking for another chance, but I know I cannot demand one. I want to prove through my actions that I can be honest, follow the rules, and handle having my phone responsibly.</p>
+                <p class="signature">I love you, and I am sorry. Thank you for reading this.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="reasons">
+        <div class="wrap">
+            <div class="section-heading">
+                <div class="eyebrow">Why I am asking</div>
+                <h2>What I will do differently.</h2>
+                <p>These are promises I can actually keep, not just things I am saying because I want my phone back.</p>
+            </div>
+            <div class="reason-grid">
+                <article class="reason">
+                    <div class="number">01</div>
+                    <h3>Honesty first</h3>
+                    <p>I will tell you the truth even when I am worried you may be upset. A difficult honest conversation is better than another lie.</p>
+                </article>
+                <article class="reason">
+                    <div class="number">02</div>
+                    <h3>Rules I can follow</h3>
+                    <p>I will follow the phone times, app limits, and other rules we agree on without arguing around them or hiding what I am doing.</p>
+                </article>
+                <article class="reason">
+                    <div class="number">03</div>
+                    <h3>Trust takes time</h3>
+                    <p>I understand that getting my phone back does not instantly fix everything. I will keep showing you I can be responsible.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="plan">
+        <div class="wrap">
+            <div class="section-heading">
+                <div class="eyebrow">My agreement</div>
+                <h2>A fair way forward.</h2>
+                <p>You should decide what feels fair. I would be grateful for the chance to work toward getting my phone back.</p>
+            </div>
+            <div class="promise-list">
+                <div class="promise"><div class="check">1</div><div><h3>I will accept a trial period.</h3><p>You can give me limited phone time first and see whether I follow the agreement.</p></div></div>
+                <div class="promise"><div class="check">2</div><div><h3>I will be open about my phone use.</h3><p>No hiding, deleting things to cover my tracks, or getting around the limits we set.</p></div></div>
+                <div class="promise"><div class="check">3</div><div><h3>I will accept the consequence if I break trust again.</h3><p>I know being responsible means accepting the result of my choices, not just enjoying the freedom.</p></div></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="closing">
+        <div class="wrap">
+            <h2>Thank you for giving me a chance to make this right.</h2>
+            <p>I am sorry for lying. I love you, I respect you, and I will work to show you that I can do better.</p>
+            <a class="button" href="#letter">Read it again</a>
+        </div>
+    </section>
+</main>
+<footer>Made with honesty, not excuses.</footer>
+</body>
+</html>
